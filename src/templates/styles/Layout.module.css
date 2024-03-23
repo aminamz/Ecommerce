@@ -1,0 +1,15 @@
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    place-items: start;
+    height: 100vh;
+    width: 100vw;
+    padding: 1rem;
+}
+.main-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
