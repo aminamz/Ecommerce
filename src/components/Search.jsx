@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "../context/queryContext";
 
 function Search() {
-  const [query, setQuery] = useSearchParams();
-  const [search, setSearch] = useState(query.get("search") || "");
+  const [search, setSearch] = useState("");
+  const { query, setQuery } = useQuery();
 
-  const searchHandler = () => {
-    setQuery({ ...query, search });
+  const changeHandler = (e) => {
+    setSearch(e.target.value.toLowerCase());
   };
+  const searchHandler = () => {
+    setQuery((query) => ({ ...query, search }));
+  };
+
   return (
     <div>
-      <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search any products" />
+      <input type="text" value={search} onChange={changeHandler} placeholder="Search any products" />
       <button onClick={searchHandler}>search</button>
     </div>
   );
